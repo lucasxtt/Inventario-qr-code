@@ -50,10 +50,9 @@ const STYLES = {
     expanded: "w-72 md:w-64",
   },
   header: {
-    // Ajustado para sempre ter flex, e o justify-content irá centralizar ou alinhar ao início
     base: "flex items-center pt-8 pb-4",
-    collapsed: "justify-center px-2", // Centraliza o logo "BE" quando colapsado
-    expanded: "justify-start px-8 gap-3", // Alinha ao início o logo e o título quando expandido
+    collapsed: "justify-center px-2",
+    expanded: "justify-start px-8 gap-3",
   },
   logo: {
     title: "font-extrabold text-2xl text-gray-800",
@@ -120,7 +119,6 @@ SidebarLink.displayName = "SidebarLink";
 
 const SidebarHeader = React.memo<{
   isCollapsed: boolean;
-  // A prop 'onToggle' foi removida, pois o botão de toggle não está mais aqui
 }>(({ isCollapsed }) => {
   const headerClassName = buildClassName(
     STYLES.header.base,
@@ -129,20 +127,16 @@ const SidebarHeader = React.memo<{
 
   return (
     <header className={headerClassName}>
-      {/* O container do logo (o quadrado "BE") SEMPRE é renderizado */}
       <div className="flex items-center gap-2">
         <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
           <span className="text-white font-bold text-sm">BE</span>
         </div>
-        {/* O título completo SÓ é renderizado se a sidebar NÃO estiver colapsada */}
         {!isCollapsed && ( 
           <h1 className={STYLES.logo.title}>
             INVENTÁRIO BELLE ÉPOQUE
           </h1>
         )}
       </div>
-      
-      {/* O botão de toggle foi removido daqui */}
     </header>
   );
 });
